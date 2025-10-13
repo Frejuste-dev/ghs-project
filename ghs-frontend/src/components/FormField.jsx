@@ -1,33 +1,38 @@
 import React from 'react';
+import { get } from 'react-hook-form';
 
 const FormField = ({
   label,
   name,
   type = 'text',
   register,
-  error,
+  errors,
   required = false,
   placeholder,
   options = [],
   className = '',
   ...props
 }) => {
+  const error = get(errors, name);
+
   const baseInputClasses = `
-    mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm 
+    mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm
     focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm
     transition-colors duration-200
     ${error ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : ''}
   `;
 
   const renderInput = () => {
+    const commonProps = {
+      ...register(name, { required }),
+      className: baseInputClasses,
+      ...props,
+    };
+
     switch (type) {
       case 'select':
         return (
-          <select
-            {...register(name, { required })}
-            className={baseInputClasses}
-            {...props}
-          >
+          <select {...commonProps}>
             <option value="">{placeholder || `Sélectionner ${label.toLowerCase()}`}</option>
             {options.map((option) => (
               <option key={option.value} value={option.value}>
@@ -36,46 +41,23 @@ const FormField = ({
             ))}
           </select>
         );
-      
+
       case 'textarea':
         return (
           <textarea
-            {...register(name, { required })}
+            {...commonProps}
             placeholder={placeholder}
             className={`${baseInputClasses} resize-none`}
             rows={4}
-            {...props}
           />
         );
-      
-      case 'date':
-        return (
-          <input
-            type="date"
-            {...register(name, { required })}
-            className={baseInputClasses}
-            {...props}
-          />
-        );
-      
-      case 'time':
-        return (
-          <input
-            type="time"
-            {...register(name, { required })}
-            className={baseInputClasses}
-            {...props}
-          />
-        );
-      
+
       default:
         return (
           <input
             type={type}
-            {...register(name, { required })}
+            {...commonProps}
             placeholder={placeholder}
-            className={baseInputClasses}
-            {...props}
           />
         );
     }
