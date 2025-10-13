@@ -1,0 +1,53 @@
+import React from 'react';
+import { clsx } from 'clsx';
+
+const LoadingSpinner = ({ 
+  size = 'md', 
+  color = 'primary',
+  className = '',
+  text = null,
+  overlay = false
+}) => {
+  const sizeClasses = {
+    sm: 'w-4 h-4',
+    md: 'w-8 h-8',
+    lg: 'w-12 h-12',
+    xl: 'w-16 h-16',
+  };
+
+  const colorClasses = {
+    primary: 'border-blue-600',
+    secondary: 'border-gray-600',
+    success: 'border-green-600',
+    warning: 'border-yellow-600',
+    danger: 'border-red-600',
+    white: 'border-white',
+  };
+
+  const spinner = (
+    <div className={clsx('flex flex-col items-center justify-center', className)}>
+      <div
+        className={clsx(
+          'animate-spin rounded-full border-2 border-t-transparent',
+          sizeClasses[size],
+          colorClasses[color]
+        )}
+      />
+      {text && (
+        <p className="mt-3 text-sm text-gray-600 animate-pulse">{text}</p>
+      )}
+    </div>
+  );
+
+  if (overlay) {
+    return (
+      <div className="fixed inset-0 bg-white bg-opacity-75 flex items-center justify-center z-50 animate-fade-in">
+        {spinner}
+      </div>
+    );
+  }
+
+  return spinner;
+};
+
+export default LoadingSpinner;

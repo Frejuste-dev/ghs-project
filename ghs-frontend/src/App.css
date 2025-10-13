@@ -1,0 +1,83 @@
+:root {
+  --primary-50: #eef2ff;
+  --primary-100: #e0e7ff;
+  --primary-600: #4f46e5;
+  --secondary-600: #0ea5e9;
+  --success-100: #dcfce7;
+  --success-500: #22c55e;
+  --success-600: #16a34a;
+  --warning-100: #fef9c3;
+  --warning-600: #ca8a04;
+  --danger-100: #fee2e2;
+  --danger-300: #fca5a5;
+  --danger-500: #ef4444;
+  --danger-600: #dc2626;
+}
+
+/* Cards and common containers */
+.card, .form-card, .modal-content {
+  background: #ffffff;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+}
+
+/* Inputs */
+.input {
+  width: 100%;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 0.625rem 0.75rem;
+  font-size: 0.95rem;
+  color: #111827;
+  outline: none;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.input:focus {
+  border-color: var(--primary-600);
+  box-shadow: 0 0 0 3px rgba(79,70,229,0.15);
+}
+
+/* Labels */
+.label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.375rem;
+}
+
+/* Status badges */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.status-approved { background: var(--success-100); color: var(--success-600); }
+.status-rejected { background: var(--danger-100); color: var(--danger-600); }
+.status-pending { background: var(--warning-100); color: var(--warning-600); }
+
+/* Modal overlay */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+}
+
+/* Simple animations */
+.animate-fade-in { animation: fadeIn 0.25s ease-out both; }
+.animate-scale-in { animation: scaleIn 0.2s ease-out both; }
+.animate-slide-in-up { animation: slideInUp 0.4s ease-out both; }
+.animate-slide-in-left { animation: slideInLeft 0.4s ease-out both; }
+.animate-slide-in-right { animation: slideInRight 0.4s ease-out both; }
+.hover-lift { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.hover-lift:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+
+@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+@keyframes scaleIn { from { opacity:0; transform: scale(0.98)} to { opacity:1; transform: scale(1)} }
+@keyframes slideInUp { from { opacity:0; transform: translateY(8px)} to { opacity:1; transform: translateY(0)} }
+@keyframes slideInLeft { from { opacity:0; transform: translateX(-8px)} to { opacity:1; transform: translateX(0)} }
+@keyframes slideInRight { from { opacity:0; transform: translateX(8px)} to { opacity:1; transform: translateX(0)} }
