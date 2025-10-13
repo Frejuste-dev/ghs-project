@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
-import { 
-  User, 
-  LogOut, 
-  Settings, 
+import {
+  User,
+  LogOut,
+  Settings,
   Bell,
   Menu,
   X,
@@ -11,6 +11,7 @@ import {
   Sun,
   Moon
 } from 'lucide-react';
+import clsx from 'clsx';
 import Button from '../ui/Button';
 
 const Header = ({ onMenuToggle, isMobileMenuOpen }) => {

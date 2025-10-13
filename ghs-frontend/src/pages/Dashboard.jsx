@@ -103,7 +103,7 @@ const Dashboard = () => {
   return (
     <div className="space-y-8 animate-fade-in">
       {/* En-tête de bienvenue */}
-      <div className="bg-gradient-to-r from-blue-600 to-purple-700 rounded-2xl p-8 text-white animate-slide-in-down">
+      <div className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl p-8 text-white animate-slide-in-down">
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold mb-2">
